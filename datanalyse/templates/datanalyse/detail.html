@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<parent
+        xmlns:svg="http://www.w3.org/2000/svg">
+<html lang="en">
+<head>
+
+
+<title>Nvstrr</title>
+    <meta charset="utf-8">
+
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <style>
+
+    #footer {
+        clear: both;
+        position: relative;
+        z-index: 10;
+        height: 3em;
+        margin-top: -3em;
+    }
+  .searchbox{
+      position:relative;
+      min-width:23px;
+      width:0%;
+      height:23px;
+      float:right;
+      overflow:hidden;
+
+      -webkit-transition: width 0.3s;
+      -moz-transition: width 0.3s;
+      -ms-transition: width 0.3s;
+      -o-transition: width 0.3s;
+      transition: width 0.3s;
+  }
+
+  .searchbox-input{
+      top:0;
+      right:0;
+      border:0;
+      outline:0;
+      background:#b2ceea;/*#557391;/*#dcddd8;*/
+      width:100%;
+      height:23px;
+      margin:0;
+      padding:0px 55px 0px 20px;
+      font-size:20px;
+      color:##12181e;
+  }
+  .searchbox-input::-webkit-input-placeholder {
+      color: #1c2630;/*#d74b4b;*/
+  }
+  .searchbox-input:-moz-placeholder {
+      color: #1c2630;/*#d74b4b;*/
+  }
+  .searchbox-input::-moz-placeholder {
+      color: #1c2630;/*#d74b4b;*/
+  }
+  .searchbox-input:-ms-input-placeholder {
+      color: #1c2630;/*#d74b4b;*/
+  }
+
+  .searchbox-icon,
+  .searchbox-submit{
+      width:23px;
+      height:23px;
+      display:block;
+      position:absolute;
+      top:0;
+      font-family:verdana;
+      font-size:15px;
+      right:0;
+      padding:0;
+      margin:0;
+      border:0;
+      outline:0;
+      line-height:23px;
+      text-align:center;
+      cursor:pointer;
+      color:#dcddd8;
+      background:#172b3c;
+  }
+
+
+
+  .searchbox-open{
+      width:100%;
+  }
+
+
+  .page-current {
+    border: 3px solid #444444;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 2px;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#logout{
+font-family:"Goudy Old Style", Garamond, Big Caslon, Times New Roman, serif !important;
+font-size: 0.85em;
+}
+
+
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("{% static 'datanalyse/img/Preloader_2.gif' %}") center no-repeat #fff;
+}
+
+
+
+  </style>
+</head>
+
+<body>
+<div class="se-pre-con" id="loader"></div>
+
+<div class="navbar navbar-default navbar-fixed-top" style="font-family: 'Cormorant SC', serif; font-size:1.2em;">
+      <div class="container-fluid ">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand animated slideInLeft" style="font-family: 'Junction-regular'; font-size:1.1em;"><b>nvstrr</b></a>
+
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="{% url 'datanalyse:index' %} ">Dashboard</a></li>
+            <li><a href="{% url 'datanalyse:news' %}" >News</a></li>
+            <li><a href="{% url 'datanalyse:howto' %}" >HowTo</a></li>
+            <li><a href="{% url 'datanalyse:learn' %}" >Learn</a></li>
+          </ul>
+
+
+        <ul class="navbar-right nav navbar-nav">
+          <li><a href="{% url 'datanalyse:buystock' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Buy Stocks
+          </a></li>
+           <li style="padding-right: 10px; line-height:50px;font-family: 'Goudy Old Style' ;"> Rs. {{money}} </li>
+           <li style="margin-top:-5px; line-height:30px; margin-bottom: -50px; " class="dropdown"> <a href="#" class="dropbtn" ><i class="fa fa-user-circle-o" style="font-size:24px;line-height:25px;"> </i>   {{usern}} </a>
+
+                <div class="dropdown-content">
+                  <a href="{% url 'datanalyse:logout' %}" id="logout" >Logout</a>
+
+                </div>
+
+                </li>
+
+
+
+        </ul>
+
+
+
+        </div>
+      </div>
+    </div>
+
+<br><br><br>
+<div class="container content" >
+<div class="row" style="padding:20px;margin-top:0px;margin-bottom:20px"><ul>
+
+
+<div class="col-sm-12 col-md-12" >
+Your stats::<hr>
+ <div class ="row" style="padding:20px;margin-top:10px;margin-bottom:10px;background-color:#b2ceea;">
+   <div class="col-sm-4 col-md-4">
+   Company ticker :: {{ userports.companies}}
+ </div>
+ <div class="col-sm-4 col-md-4">
+   Shares Bought :: {{ userports.quantity }}
+ </div>
+ <div class="col-sm-4 col-md-4">
+   Rate bought at :: {{ userports.boughtat }}
+ </div>
+ </div>
+ </div>
+</div>
+</div>
+
+<div class="container" >
+  <div class="row" style="padding:20px;margin-top:0px;margin-bottom:20px"><ul>
+
+ <div class="col-sm-12 col-md-12" >
+  Live stats:: {{name}}<hr>
+  <div class ="row"  style="padding:20px;margin-top:10px;margin-bottom:10px;background-color:#b2ceea;">
+    <div class="col-sm-3 col-md-3">
+    Latest quote :: {{l}}
+  </div>
+  <div class="col-sm-3 col-md-3">
+    {% if c < 0 %}
+    Change:: <span style="color:red">{{c}} </span>
+    {% else %}
+    Change:: <span style="color:green">{{c}} </span>
+    {% endif %}
+  </div>
+  <div class="col-sm-3 col-md-3">
+    {% if cp < 0 %}
+    Change Percentage:: <span style="color:red">{{cp}} %</span>
+    {% else %}
+    Change Percentage:: <span style="color:green">{{cp}} %</span>
+    {% endif %}
+  </div>
+  <div class="col-sm-3 col-md-3">
+    Opened at :: {{op}}
+  </div>
+  </div>
+  <div class="row"  style="padding:20px;margin-top:10px;margin-bottom:10px;background-color:#b2ceea;">
+    <div class="col-sm-3 col-md-3">
+    High :: {{hi}}<br> 52wk High :: {{hi52}}
+  </div>
+  <div class="col-sm-3 col-md-3">
+    Volume :: {{vo}}
+  </div>
+  <div class="col-sm-3 col-md-3">
+    Low :: {{lo}}<br>52wk Low :: {{lo52}}
+  </div>
+  <div class="col-sm-3 col-md-3">
+    Market Cap :: {{mc}}
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row"  style="margin-top:0px;margin-bottom:20px">
+    <div class="col-sm-12 col-md-12">
+
+      <center><hr><img src='{{logo}}' alt="{{name}}"><hr></center>
+</div>
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row" style="padding:20px;margin-top:0px;margin-bottom:20px">
+
+
+         <div class="col-sm-6 col-md-6"  style="padding:20px;margin-top:0px;margin-bottom:20px">
+      <center> <img src='{{link}}' align="left"></center>
+        <br><br> <br><br><br><hr>
+        <h4 class="text-muted" align="left">Company News</h4><hr>
+      <ul>
+
+        {% for entry in feeds.entries %}
+        <li><a href="{{entry.link}}">{{entry.title}}</a></li>
+        {% endfor %}
+      </ul>
+     </div>
+
+
+
+  <div class="col-sm-6 col-md-6" >
+
+    <br>
+    <h3 class="text-muted" align="left">Summary</h3>
+    <hr>
+    <p align=left>{{summary}}</p>
+</div>
+  </div>
+</div>
+
+<div id="footer">
+<div class="container-fluid">
+<div class="row" style="margin-top:10px;margin-bottom:10px;">
+
+  <div><center><p> Nvstrr &copy; 2016</p></center></div>
+
+</div>
+
+</div>
+</div>
+
+<script >
+
+$(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+  });
+</script>
+
+
+
+
+</body>
+</html>

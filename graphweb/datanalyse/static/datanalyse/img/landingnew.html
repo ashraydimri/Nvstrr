@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nvstrr</title>
+    <meta charset="utf-8">
+
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <style>
+
+
+    #topr{
+    background-image:url("stocks.jpg");
+    height:700px;
+    width:100%;
+
+    }
+
+    #toprow{
+    margin-top:100px;
+    text-align:center;
+
+
+    }
+
+    .bgimg-2 {
+  background-image: url("buffet.png");
+  min-height: 400px;
+
+    }
+
+
+    .bgimg-3 {
+    background-image: url("soros.jpg");
+    min-height: 400px;
+    }
+
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+    position: relative;
+    opacity: 0.85;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    }
+
+     #topr{
+       position: relative;
+
+       opacity: 1;
+       background-attachment: fixed;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+       width: 100%;
+     }
+
+
+    .captionq {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: left;
+  padding-left: 80px;
+  color: #000;
+    font: 400 15px/1.8 "Lato", sans-serif;
+  }
+
+  .captiona{
+position: absolute;
+left: 0;
+bottom:-35%;
+width: 100%;
+text-align: right;
+padding-left: 80px;
+padding-bottom:200px;
+color: #000;
+  font: 400 15px/1.8 "Lato", sans-serif;
+}
+
+  #para1,#para2{
+
+    margin-right: -25px;
+    margin-left: -25px;
+
+  }
+
+  #footer{
+  background-color:#900C3F;
+  padding-top:70px;
+  width:100%;
+  color:lightgrey;
+  }
+
+  #size{
+width:400px;
+
+}
+
+.pt{
+margin-top:-20px;
+color: #000;
+opacity:1;
+position: absolute;
+width: 100%;
+text-align: center;
+  font: 400 60px/1.8 "Lato", sans-serif;
+}
+.lead{
+  margin-top:30px;
+  color: #000;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+    font: 400 30px/1.8 "Lato", sans-serif;
+}
+
+.about{
+  margin-top:100px;
+  margin-bottom:70px;
+}
+
+
+.img-center {
+	margin: 0 auto;
+}
+#buffet,#warren,#george,#soros{
+  /*animation-duration: 3s;
+  animation-delay: 2s;*/
+  animation-iteration-count: 1;
+  opacity: 0;
+}
+
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse" style="overflow-x: hidden;background-color:#FFFFFF;">
+  <div class="navbar navbar-default navbar-fixed-top" style="font-family: 'Cormorant SC', serif; font-size:1.2em;">
+      <div class="container-fluid ">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand animated slideInLeft" style="font-family: 'Junction-regular'; font-size:1.1em;"><b>nvstrr</b></a>
+
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#topr">Home</a></li>
+            <li><a href="#mid " >About</a></li>
+            <li><a href="#team" >Team</a></li>
+            <li><a href="#footer" >Sign Up</a></li>
+          </ul>
+        <!--  <form class="navbar-form navbar-right" action=""  method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+              <input type="email" placeholder="Email" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control"/>
+            </div>
+            <button typle="submit " class="btn btn-success">Log In</button>
+          </form>-->
+          <form class="navbar-form navbar-right" method="post" action="{% url 'datanalyse:loggingin' %}">
+            {% csrf_token %}
+
+                  
+                        
+                              <div class="form-group">
+                                  {{ form.username.label_tag }}
+                                  {{ form.username }}
+                             </div>
+                               <div class="form-group">
+                                  {{ form.password.label_tag }}
+                                  {{ form.password }}
+                             </div>               
+                              <input class="btn btn-success btn-sm" type="submit" value="login" />
+                  </form>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="topr">
+    <div class="container-fluid contentContainer" >
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" id="toprow">
+      <h1 class="pt" ><b>A virtual trading platform.</b></h1>
+      <pre style="opacity:0;">
+
+
+
+
+
+
+
+      </pre>
+
+      <p class="lead" style="opacity:1;">Learn to rules of investing in the real market using virtual money
+
+      Ever wondered how to learn to invest in the stock market skilfully without having to risk your own money? Here it is !Trade in the real world without having to worry about any loss, because it's all on us :P  </p>
+
+
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="container" id="mid" style="background-color:#FFFFFF" >
+<div class="row about">
+  <div class="col-md-6 ">
+  <h3><img src="icon1.png" style="float:left;"> Compete, Risk Free with Rs.20,00,000 in Virtual Cash</h3>
+  <p>Start with Rs.20,00,000 in virtual cash and put your trading skills to the test! Invest carefully and trade your way to the top!</p>
+  </div>
+  <div class="col-md-6 ">
+  <h3><img src="icon2.png" style="float:left;"> A Stepping Stone to the Real Markets</h3>
+  <p>
+    The ideal platform to get your financial feet wet! Submit trades in a virtual environment before you start risking your own capital.</p>
+  </div>
+  <pre style="opacity:0">
+
+  </pre>
+<div class="row about">
+  <div class="col-md-6 ">
+  <h3><img src="icon3.png" style="float:left;"> Learn the tips and tricks of the market without any real world risks.</h3>
+  <p>Get information from leading sources of financial content on the web, ranging from market news to retirement strategies.</p>
+  </div>
+  <div class="col-md-6 ">
+  <h3><img src="icon4.png" style="float:left;"> Monitor your performance with the data we provide specific to your portfolio.</h3>
+  <p>Track your stock options and trade history for better analysis of your performance.</p>
+  </div>
+</div>
+</div>
+</div>
+
+
+<p id="para"></p>
+<div class="container-fluid"   id="para1">
+
+  <div class="bgimg-2" >
+    <div class="captionq">
+      <blockquote>
+        <p id="buffet"><span class="border"  style="background-color:transparent;font-size:25px;color: #f7f7f7;"><b>"</b>Risk comes from not knowing what you are doing.<b>"</b></span>
+        </p>
+        <footer><span id="warren"class="border"  style="background-color:transparent;font-size:30px;color: #f7f7f7;"><b>Warren Buffet</b></span></footer>
+      </blockquote>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container" id="team" style="margin-top:30px;margin-bottom:70px;">
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="page-header">Our Team</h2>
+    </div>
+    <div class="col-md-6 text-center">
+        <img class="img-circle img-responsive img-center" width="220" height="220" src="ashray.jpg" alt="">
+        <h3>Ashray Dimri
+            <small>Developer</small>
+        </h3>
+        <p><a href="https://www.facebook.com/dimriashray" style="font-size:24px"><i class="fa fa-facebook-square"></i></a>
+          <a href="https://github.com/ashraydimri" style="color:black;"> <i class="fa fa-github" style="font-size:24px"></i></a>
+          <a href="mailto:ashraydimri@gmail.com" style="color:grey"> <i class="fa fa-envelope" style="font-size:24px"></i></a>
+          </p>
+    </div>
+    <div class="col-md-6 text-center">
+        <img class="img-circle img-responsive img-center" width="220" height="220" src="riju.jpg" alt="">
+        <h3>Riju Khatri
+            <small>Developer</small>
+        </h3>
+        <p><a href="https://www.facebook.com/riju.khatri" style="font-size:24px"><i class="fa fa-facebook-square"></i></a>
+              <a href="mailto:19.riju@gmail.com" style="color:grey"> <i class="fa fa-envelope" style="font-size:24px"></i></a>
+        </p>
+    </div>
+</div>
+</div>
+
+
+
+
+<p id="para"></p>
+<div class="container-fluid" id="para2" >
+
+  <div class="bgimg-3">
+    <div class="captiona">
+      <div class="col-md-6"></div>
+      <div class="col-md-6" >
+      <blockquote>
+        <p id="george"><span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"><b>"</b>I am only rich because I know when I am wrong. I basically have survived by recognizing my mistakes.<b>"</b></span>
+        </p>
+        <footer><span id="soros" class="border" style="background-color:transparent;font-size:30px;color: #f7f7f7;"><b>George Soros</b></span></footer>
+      </blockquote>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<div class="container-fluid" id="footer"  style="background-color: #0084b4;">
+<div class="row" style="margin-top:10px;margin-bottom:70px;">
+  <h1 class="center title" style="text-align:center; background-color:transparent;font-size:30px;color: #f7f7f7;">Start investing right away!</h1><br><br>
+  <div align="center">
+  <form method="post" action="{% url 'datanalyse:register' %} ">
+    {% csrf_token %}
+    <input type="text" class="form-control" style="width:400px" id="usern" name="username" required placeholder="Username"/><br>
+    <input type="text" class="form-control" style="width:400px"  id="emailr" name="email" placeholder="Email"/><br>
+    <input type="password" class="form-control" style="width:400px"  id="pass1" name="password" required placeholder="Password"/><br>
+    <input type="password" class="form-control" style="width:400px"  id="pass2" name="confirmpassword" required placeholder="Confirm Password"/><br>
+    <!--<input type="checkbox"> I agree to the <a href="">Terms of Service</a><br><br>-->
+    <input type="submit" value="Create a Free Account"  class="btn btn-default"/>
+
+  </form>
+</div>
+
+</div>
+</div>
+
+
+<div class="container-fluid" style="background-color:#F8F8F8;">
+<div class="row" style="margin-top:10px;margin-bottom:10px;">
+
+  <div><center><p> Nvstrr &copy; 2016</p></center></div>
+
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+    <script>
+	$(".contentContainer").css("min-height",$(window).height());
+
+  /*$(window).scroll(function(e){
+    parallax();
+  });
+  function parallax(){
+    var scrolled = $(window).scrollTop();
+    $('#topr').css('top',-(scrolled*0.2)+'px');
+  }*/
+  /*function animationHover(a, element, animation){
+    element = $(element);
+    a=$(a);
+    a.mouseover(
+        function() {
+            element.css("opacity", 1);
+        });
+    a.mouseover(
+        function() {
+            element.addClass('animated ' + animation);
+        });
+      }*/
+
+      $(document).ready(function(){
+    $("#para1").mouseover(function(){
+        $("#buffet").addClass('animated ' + 'slideInLeft' );
+    });
+    $("#para1").mouseover(function(){
+        $("#buffet").css("opacity", 1);
+    });
+    $("#para1").mouseover(function(){
+        $("#warren").addClass('animated ' + 'zoomIn' );
+    });
+    $("#para1").mouseover(function(){
+        $("#warren").css("opacity", 1);
+    });
+    $("#para2").mouseover(function(){
+        $("#george").addClass('animated ' + 'slideInRight' );
+    });
+    $("#para2").mouseover(function(){
+        $("#george").css("opacity", 1);
+    });
+    $("#para2").mouseover(function(){
+        $("#soros").addClass('animated ' + 'zoomIn' );
+    });
+    $("#para2").mouseover(function(){
+        $("#soros").css("opacity", 1);
+    });
+  });
+
+/*{% if not user.is_authenticated %}
+$("ul.nav.navbar-nav.navbar-right").css("display","none");
+{% endif %}*/
+
+    </script>
+
+
+</body>
+</html>
